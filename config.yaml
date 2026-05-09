@@ -1,0 +1,75 @@
+# 微信公众号发布流水线配置
+# 首次使用前，请填写以下三个 API Key
+
+image_api:
+  # 豆包方舟 API Key（获取：https://console.volcengine.com/ark）
+  api_key: ""
+  base_url: https://ark.cn-beijing.volces.com/api/v3
+  model: "ep-xxxxxxxx"  # 模型接入点名称，如 ep-20240606000000-xxxxx
+  default_style: warm-flat
+
+# 图片风格预设（从 baoyu skill 体系提取，适配公众号文章配图）
+# 每个风格 = palette(色板) + rendering(渲染风格) + mood(情绪强度)
+# 使用方式：run_pipeline.py --style warm-flat
+image_styles:
+  warm-flat:
+    name: "暖色扁平"
+    description: "友好、现代、适合教程/个人成长/AI实战类文章"
+    palette: "warm"
+    rendering: "flat-vector"
+    mood: "balanced"
+    prompt_suffix: >-
+      flat vector illustration, clean geometric shapes, uniform color fills,
+      no texture no gradients, warm orange (#ED8936) and golden yellow (#F6AD55)
+      on cream (#FFFAF0) background, rounded friendly shapes, modern app icon aesthetic,
+      simplified silhouettes, generous whitespace, no text no words no letters,
+      wide 16:9 composition
+  dark-tech:
+    name: "暗色科技"
+    description: "高级感、适合AI/技术深度/商业分析类文章"
+    palette: "dark"
+    rendering: "digital"
+    mood: "bold"
+    prompt_suffix: >-
+      polished digital illustration, dark purple-black (#0A0A0A) background,
+      electric purple (#8B5CF6) and cyan (#06B6D4) accent glows, neon edge lighting,
+      frosted glass card elements, subtle gradient effects, atmospheric depth,
+      precise clean edges, high contrast, premium cinematic feel,
+      simplified icon-based visuals, no text no words no letters,
+      wide 16:9 composition
+  cool-editorial:
+    name: "冷色编辑"
+    description: "专业、权威、适合系统设计/方法论/数据分析类文章"
+    palette: "cool"
+    rendering: "digital"
+    mood: "balanced"
+    prompt_suffix: >-
+      clean digital editorial illustration, engineering blue (#2563EB) and navy (#1E3A5F)
+      with cyan (#06B6D4) accents on light gray (#F8F9FA) background,
+      polished UI mockup aesthetic, card-based layouts, subtle drop shadows,
+      data visualization elements, structured grid composition, precise edges,
+      professional infographic style, no text no words no letters,
+      wide 16:9 composition
+  sketch-warm:
+    name: "手绘暖色"
+    description: "有温度、适合个人故事/认知变化/情感类文章"
+    palette: "warm"
+    rendering: "hand-drawn"
+    mood: "subtle"
+    prompt_suffix: >-
+      hand-drawn pencil sketch with soft watercolor wash, warm muted tones,
+      terracotta (#C05621) and golden yellow (#F6AD55) on cream background,
+      sketchy organic lines, visible pencil strokes, notebook paper texture feel,
+      intimate personal illustration, low contrast desaturated colors,
+      rounded organic shapes, gentle warm lighting,
+      no text no words no letters, wide 16:9 composition
+
+imgbb:
+  # ImgBB 图片托管 API Key（获取：https://api.imgbb.com/）
+  api_key: ""
+  upload_url: https://api.imgbb.com/1/upload
+
+wechat_api:
+  # limyai 微信发布网关 API Key（获取：https://wx.limyai.com）
+  api_base: https://wx.limyai.com/api/openapi
+  api_key: ""
